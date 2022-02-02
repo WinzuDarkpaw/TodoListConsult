@@ -1,1 +1,7 @@
 
+openapi: 3.0.0
+info:
+    title: TodoList API
+    version: 0.0.1
+    
+# -- https://swagger.io/docs/specification/basic-structure/ -- #
