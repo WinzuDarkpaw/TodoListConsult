@@ -27,7 +27,6 @@ paths:
       parameters:
       - in: "path"
         name: "list_id"
-        description: "Die Todo-Listen ID"
         required: true
         type: "integer"
       responses:
@@ -47,16 +46,8 @@ paths:
       parameters:
       - name: "list_id"
         in: "path"
-        description: "Löscht die Todo-Liste mit der angegebenen ID"
         required: true
         type: "integer"
-        items:
-          type: "string"
-          enum:
-          - "available"
-          - "pending"
-          - "sold"
-          default: "available"
       responses:
         "200":
           description: "successful operation"
@@ -71,6 +62,48 @@ paths:
       consumes:
       - "application/xml"
       - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "invalid input"
+  /todo-list/{list_id}/entry/:
+    post:
+      tags:
+      - "todo-list"
+      summary: "Fügt einen Eintrag zu einer bestehenden Todo-Liste hinzu"
+      operationId: "addEntryToTodoList"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "list_id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "invalid input"
+  /todo-list/{list_id}/entry/{entry_id}:
+    put:
+      tags:
+      - "todo-list"
+      summary: "Aktualisiert einen Eintrag aus einer bestehenden Todo-Liste"
+      operationId: "updateEntryFromTodoList"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "list_id"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "entry_id"
+        in: "path"
+        required: true
+        type: "integer"
       responses:
         "200":
           description: "successful operation"
