@@ -34,7 +34,6 @@ paths:
           description: "successful operation"
         "405":
           description: "invalid input"
-  /todolist/{list_id}:
     delete:
       tags:
       - "todo-list"
@@ -101,6 +100,74 @@ paths:
         required: true
         type: "integer"
       - name: "entry_id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "invalid input"
+    delete:
+      tags:
+      - "todo-list"
+      summary: "Löscht einen Eintrag aus einer bestehenden Todo-Liste"
+      operationId: "deleteEntryFromTodoList"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "list_id"
+        in: "path"
+        required: true
+        type: "integer"
+      - name: "entry_id"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "invalid input"
+  /user:
+    get:
+      tags:
+      - "user"
+      summary: "Liefert eine Liste aller Nutzer"
+      operationId: "getUsers"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "invalid input"
+    post:
+      tags:
+      - "user"
+      summary: "Fügt einen Nutzer hinzu"
+      operationId: "createUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "invalid input"
+  /user/{user_id}:
+    delete:
+      tags:
+      - "user"
+      summary: "Löscht einen Nutzer"
+      operationId: "deleteUser"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "user_id"
         in: "path"
         required: true
         type: "integer"
